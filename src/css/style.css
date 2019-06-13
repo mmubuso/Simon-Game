@@ -76,40 +76,22 @@ main{
     border-top-left-radius: 100%;
     background-color: green;
 }
-.greenGlow{
-    box-shadow:
-    0 0 20px 10px #fff,  /* inner white */
-    0 0 50px 30px green, /* middle green */
-    0 0 50px 30px #0ff; /*outer cyan*/
-}
 #blue{
     border-bottom-right-radius: 100%;
     background-color: blue;
-}
-.blueGlow{
-    box-shadow:
-        0 0 20px 10px #fff,  /* inner white */
-        0 0 50px 30px blue, /* middle blue */
-        0 0 50px 30px #0ff; /*outer cyan*/
 }
 #yellow{
     border-bottom-left-radius: 100%;
     background-color: yellow;  
 }
-.yellowGlow{
-    box-shadow:
-        0 0 20px 10px #fff,  /* inner white */
-        0 0 50px 30px yellow, /* middle yellow */
-        0 0 50px 30px #0ff; /*outer cyan*/
-}
 #red{
     border-top-right-radius: 100%;
     background-color: red;
 }
-.redGlow{
+.glow{
     box-shadow:
         0 0 20px 10px #fff,  /* inner white */
-        0 0 50px 30px red, /* middle red */
+        0 0 50px 30px yellow, /* middle red */
         0 0 50px 30px #0ff; /*outer cyan*/
 }
 

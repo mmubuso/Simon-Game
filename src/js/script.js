@@ -1,9 +1,12 @@
 // Javascript arry
 
+
 //Variables 
 //stores variable for clearing setInterval timer
 let stopRunInterval1
 let stopRunInterval2
+//Stores flag that controls iterator
+let intervalFlag = false
 
 //Tracks light pattern
 let lightOnCounter = 0
@@ -63,30 +66,20 @@ let compareAnswers = (playerArray,computerArray) => {
 //Controls delay between items 
 let runLightSequence = () => {
     stopRunInterval1 = setInterval(turnlightOn, 1000)
-    stopRunInterval2 = setTimeout( () => stopRunInterval2 = setInterval(turnLightOf, 1000),1000)
+    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(turnlightOn, 1000),500)
 }
 
 //Might turn these into one function using toggle
 //Turns on the light to show activated
 let  turnlightOn =  () => {
-    console.log(lightOnCounter)
     if (computerSequence.length > lightOnCounter) {
-        computerSequence[lightOnCounter].addClass('redGlow')
-        lightOnCounter++
+        console.log("Light On")
+        computerSequence[lightOnCounter].toggleClass('glow')
+
+        if(intervalFlag){lightOnCounter++;intervalFlag=false}else{intervalFlag = true}
     } else {
         lightOnCounter = 0
         clearInterval(stopRunInterval1)
-    }
-}
-
-//Turns off the light to show deactivated
-let  turnLightOf =() => {
-    console.log(lightOffCounter)
-    if (computerSequence.length > lightOffCounter) {
-        computerSequence[lightOffCounter].removeClass('redGlow')
-        lightOffCounter++
-    } else {
-        lightOffCounter = 0
         clearInterval(stopRunInterval2)
     }
 }
