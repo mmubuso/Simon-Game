@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        main{
+        main {
             height: 200px;
             width: 200px;
             margin: auto;
         }
-        main h1{
+
+        main h1 {
             font-size: 70px;
             text-align: center;
         }
     </style>
 </head>
+
 <body>
     <main class="display">
         <h1>Input will go here</h1>
-    </main>  
+    </main>
     <script>
         //Loop through an array on display and
         //  and have 2 sec delay between screen
         //Variables
-        let numbers = [1,2,3,4,3,2,1]
+        let numbers = [1, 2, 3, 4, 3, 2, 5]
         let canvas = document.querySelector('h1')
+        let numbersCounter = 0
+        let clearNum
+
 
         //Function
-        //Loop through array and display every variable
-        let displayArray = function(){
-            canvas.innerText = numbers[1]
+        let displayFunc = function () {
+            console.log(numbersCounter)
+            if (numbers.length > numbersCounter) {
+                canvas.innerText = numbers[numbersCounter]
+                numbersCounter++
+            } else {
+                numbersCounter = 0
+                clearInterval(clearNum)
+            }
         }
+
+        
+       
+    
+        let runSetInterval = () => { 
+            clearNum = setInterval(displayFunc, 2000)}
+
     </script>
 </body>
+
 </html>

@@ -1,0 +1,38 @@
+  /* / */
+
+#shell{
+    border: 20px solid black;
+    width: 504px;
+    height: 504px;
+    border-radius: 100%;
+    margin: 0 auto;
+    background-color: black;
+    z-index: -1;
+}
+
+/* All Buttons */
+.colorButtons{
+    display: inline-block;
+    border: 0 solid red;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+/* Color item buttons */
+#green{
+    border-top-left-radius: 100%;
+    background-color: green;
+}
+#blue{
+    border-bottom-right-radius: 100%;
+    background-color: blue;
+}
+#yellow{
+    border-bottom-left-radius: 100%;
+    background-color: yellow;
+}
+#red{
+    border-top-right-radius: 100%;
+    background-color: red;
+}
