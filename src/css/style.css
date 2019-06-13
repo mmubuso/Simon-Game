@@ -1,5 +1,22 @@
-  /* / */
-
+  /*  */
+  .content{
+      display: flex;
+      flex-direction: column;
+  }
+  /* Header section */
+  header{
+      background-color: blue;
+      height: 120px;
+  }
+  
+main{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-area: 
+    "sidebar1 main-container sidebar2"
+    ;
+}
+  /* Container for simon pieces */
 #shell{
     border: 20px solid black;
     width: 504px;
@@ -8,6 +25,7 @@
     margin: 0 auto;
     background-color: black;
     z-index: -1;
+    
 }
 
 /* All Buttons */
@@ -35,4 +53,8 @@
 #red{
     border-top-right-radius: 100%;
     background-color: red;
+}
+footer{
+    height: 100px;
+    background-color: blueviolet;
 }
