@@ -18,9 +18,8 @@ let computerSequence = [greenPiece,redPiece,yellowPiece,bluePiece,bluePiece]
 let playerSequence = [greenPiece,redPiece,yellowPiece,bluePiece]
 
 
-
 //Objects
-//Keeps track of what round youre on
+//Keeps track of what round you're on
 let levelTrack = {
     score: 0,
     addOne: function(){
@@ -29,8 +28,28 @@ let levelTrack = {
     }
 }
 
-
 //Functions
+
+//Generate random number and push color that matches number to computers new sequence
+let pushRandomColor = () => {
+    let color;
+switch (Math.floor(Math.random() * 4) + 1) {
+  case 1:
+    color = greenPiece;
+    break;
+  case 2:
+    color = redPiece;
+    break;
+  case 3:
+    color = yellowPiece
+    break;
+  case 4:
+    color = bluePiece;
+    break;
+}
+    computerSequence.push(color)
+} 
+
 //Return false if arrays dont match and true if they do
 let compareAnswers = (playerArray,computerArray) => {
     for(let i = 0; i < playerArray.length; i++){
@@ -49,7 +68,7 @@ let runLightSequence = () => {
 
 //Might turn these into one function using toggle
 //Turns on the light to show activated
-let  turnlightOn = function () {
+let  turnlightOn =  () => {
     console.log(lightOnCounter)
     if (computerSequence.length > lightOnCounter) {
         computerSequence[lightOnCounter].addClass('redGlow')
@@ -61,7 +80,7 @@ let  turnlightOn = function () {
 }
 
 //Turns off the light to show deactivated
-let  turnLightOf = function () {
+let  turnLightOf =() => {
     console.log(lightOffCounter)
     if (computerSequence.length > lightOffCounter) {
         computerSequence[lightOffCounter].removeClass('redGlow')
