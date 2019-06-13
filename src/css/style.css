@@ -1,31 +1,41 @@
   /*  */
-  .content{
-      display: flex;
-      flex-direction: column;
-  }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Container for everyting */
+.content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 900px;
+}
+
   /* Header section */
-  header{
-      background-color: blue;
-      height: 120px;
-  }
+header{
+  
+    height: auto;
+}
   
 main{
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    display: flex;
+    justify-content: space-around;
+    /* grid-template-columns: 1fr 2fr 1fr;
     grid-template-areas: 
     "sidebar1 main-container sidebar2"
-    ;
+    ; */
 }
   /* Container for simon pieces */
 #shell{
     border: 20px solid black;
-    width: 504px;
-    height: 504px;
+    width: 500px;
+    height: 500px;
     border-radius: 100%;
     margin: 0 auto;
     background-color: black;
     z-index: -1;
-    grid-area: main-container;
+    /* grid-area: main-container; */
 
 }
 
@@ -33,9 +43,10 @@ main{
 .colorButtons{
     display: inline-block;
     border: 0 solid red;
-    width: 250px;
-    height: 250px;
+    min-width: 49%;
+    min-height: 49%;
     margin: 0 auto;
+    z-index: 2;
 }
 
 /* Color item buttons */
@@ -54,8 +65,14 @@ main{
 #red{
     border-top-right-radius: 100%;
     background-color: red;
+    box-shadow:
+        0 0 30px 15px #fff,  /* inner white */
+        0 0 70px 30px red, /* middle magenta */
+        0 0 70px 45px #0ff; outer cyan
 }
+
+/* Footer */
 footer{
-    height: 100px;
+    height: 50px;
     background-color: blueviolet;
 }
