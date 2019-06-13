@@ -68,11 +68,11 @@ main{
     box-shadow:
         0 0 30px 15px #fff,  /* inner white */
         0 0 70px 30px red, /* middle magenta */
-        0 0 70px 45px #0ff; outer cyan
+        0 0 70px 45px #0ff; /*outer cyan*/
 }
 
 /* Footer */
 footer{
     height: 50px;
-    background-color: blueviolet;
+    background-color: blue;
 }
