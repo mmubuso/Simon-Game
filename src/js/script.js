@@ -17,8 +17,8 @@ let redPiece = $('#red')
 let yellowPiece = $('#yellow')
 let bluePiece = $('#blue')
 //Array of selected colors
-let computerSequence = [greenPiece,redPiece,yellowPiece,bluePiece,bluePiece]
-let playerSequence = [greenPiece,redPiece,yellowPiece,bluePiece]
+let computerSequence = []
+let playerSequence = []
 
 
 //Objects
@@ -34,7 +34,7 @@ let levelTrack = {
 //Functions
 
 //Generate random number and push color that matches number to computers new sequence
-let pushRandomColor = () => {
+let pushRandomColor = (arr) => {
     let color;
 switch (Math.floor(Math.random() * 4) + 1) {
   case 1:
@@ -50,7 +50,7 @@ switch (Math.floor(Math.random() * 4) + 1) {
     color = bluePiece;
     break;
 }
-    computerSequence.push(color)
+    arr.push(color)
 } 
 
 //Return false if arrays dont match and true if they do
@@ -84,7 +84,15 @@ let  turnlightOn =  () => {
     }
 }
 
-//EventListernes
+//EventListeners
+//press start button to start game
+$('#start').on('click', () => {
+    runLightSequence()
+    pushRandomColor(computerSequence)
+    document.getElementById('start').
+})
+
+
 //Displays the instructions for the game when clicked
 $('.content .btn').eq(1).on('click', function () {
     swal({
