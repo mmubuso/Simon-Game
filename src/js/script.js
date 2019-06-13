@@ -14,7 +14,9 @@ let redPiece = $('#red')
 let yellowPiece = $('#yellow')
 let bluePiece = $('#blue')
 //Array of selected colors
-let colorArr = [greenPiece,redPiece,yellowPiece,bluePiece]
+let computerSequence = [greenPiece,redPiece,yellowPiece,bluePiece,bluePiece]
+let playerSequence = [greenPiece,redPiece,yellowPiece,bluePiece]
+
 
 
 //Objects
@@ -29,18 +31,28 @@ let levelTrack = {
 
 
 //Functions
+//Return false if arrays dont match and true if they do
+let compareAnswers = (playerArray,computerArray) => {
+    for(let i = 0; i < playerArray.length; i++){
+        if(playerArray[i] !== computerArray[i]){
+            return false
+        }
+    }
+    return true
+}
+
 //Controls delay between items 
 let runLightSequence = () => {
     stopRunInterval1 = setInterval(turnlightOn, 1000)
     stopRunInterval2 = setTimeout( () => stopRunInterval2 = setInterval(turnLightOf, 1000),1000)
-
 }
 
+//Might turn these into one function using toggle
 //Turns on the light to show activated
 let  turnlightOn = function () {
     console.log(lightOnCounter)
-    if (colorArr.length > lightOnCounter) {
-        colorArr[lightOnCounter].addClass('redGlow')
+    if (computerSequence.length > lightOnCounter) {
+        computerSequence[lightOnCounter].addClass('redGlow')
         lightOnCounter++
     } else {
         lightOnCounter = 0
@@ -51,8 +63,8 @@ let  turnlightOn = function () {
 //Turns off the light to show deactivated
 let  turnLightOf = function () {
     console.log(lightOffCounter)
-    if (colorArr.length > lightOffCounter) {
-        colorArr[lightOffCounter].removeClass('redGlow')
+    if (computerSequence.length > lightOffCounter) {
+        computerSequence[lightOffCounter].removeClass('redGlow')
         lightOffCounter++
     } else {
         lightOffCounter = 0
