@@ -12,7 +12,7 @@
 main{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-area: 
+    grid-template-areas: 
     "sidebar1 main-container sidebar2"
     ;
 }
@@ -25,7 +25,8 @@ main{
     margin: 0 auto;
     background-color: black;
     z-index: -1;
-    
+    grid-area: main-container;
+
 }
 
 /* All Buttons */
