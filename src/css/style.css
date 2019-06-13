@@ -16,12 +16,19 @@
     background-attachment: scroll;
     background-size: cover;
 }
-
+.content .btn{
+    width: 120px
+}
   /* Header section */
 header .card{
-    height: fit-content;
+    height: 150px;
+    padding: 0px;
     margin-bottom: 20px;
 }
+.card-body{
+    padding: 5px;
+}
+
 
 /* GameBoard Container */
 main{
@@ -32,8 +39,8 @@ main{
   /* Container for simon pieces */
 #shell{
     border: 20px solid black;
-    width: 600px;
-    height: 600px;
+    width: 550px;
+    height: 550px;
     border-radius: 100%;
     margin: 0 auto;
     background-color: black;
