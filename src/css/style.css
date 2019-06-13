@@ -4,39 +4,54 @@
     margin: 0;
     padding: 0;
 }
+
 /* Container for everyting */
 .content{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: start;
     height: 900px;
+    /* background-image: url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=955&q=80'); */
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
 }
 
   /* Header section */
-header{
-  
-    height: auto;
+header .card{
+    height: fit-content;
+    margin-bottom: 20px;
 }
-  
+
+/* GameBoard Container */
 main{
     display: flex;
     justify-content: space-around;
-    /* grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: 
-    "sidebar1 main-container sidebar2"
-    ; */
 }
+
   /* Container for simon pieces */
 #shell{
     border: 20px solid black;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     border-radius: 100%;
     margin: 0 auto;
     background-color: black;
-    z-index: -1;
-    /* grid-area: main-container; */
+    z-index: 1;
+    align-self: center;
 
+}
+
+/* Style for Score Keeper */
+.scoreKeeper,.card-header{
+    color: black;
+    border-style: none;
+}
+
+/* Screen that tracks whos turn it is */
+.turnFlag{
+    text-align: center;
+    height: 50%
 }
 
 /* All Buttons */
@@ -54,25 +69,41 @@ main{
     border-top-left-radius: 100%;
     background-color: green;
 }
+.greenGlow{
+    box-shadow:
+    0 0 20px 10px #fff,  /* inner white */
+    0 0 50px 30px green, /* middle green */
+    0 0 50px 30px #0ff; /*outer cyan*/
+}
 #blue{
     border-bottom-right-radius: 100%;
     background-color: blue;
 }
+.blueGlow{
+    box-shadow:
+        0 0 20px 10px #fff,  /* inner white */
+        0 0 50px 30px blue, /* middle blue */
+        0 0 50px 30px #0ff; /*outer cyan*/
+}
 #yellow{
     border-bottom-left-radius: 100%;
-    background-color: yellow;
+    background-color: yellow;  
+}
+.yellowGlow{
+    box-shadow:
+        0 0 20px 10px #fff,  /* inner white */
+        0 0 50px 30px yellow, /* middle yellow */
+        0 0 50px 30px #0ff; /*outer cyan*/
 }
 #red{
     border-top-right-radius: 100%;
     background-color: red;
+}
+.redGlow{
     box-shadow:
-        0 0 30px 15px #fff,  /* inner white */
-        0 0 70px 30px red, /* middle magenta */
-        0 0 70px 45px #0ff; /*outer cyan*/
+        0 0 20px 10px #fff,  /* inner white */
+        0 0 50px 30px red, /* middle red */
+        0 0 50px 30px #0ff; /*outer cyan*/
 }
 
 /* Footer */
-footer{
-    height: 50px;
-    background-color: blue;
-}

@@ -17,27 +17,21 @@
 </head>
 
 <body>
+
     <div class="content">
+
         <header class="container">
             <!-- Display Area for Game -->
-            <div class="card text-center bg-danger">
+            <div class="card text-center">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Play Again</a>
+                    <h5 class="card-title display-3">Simon Game</h5>
+                    <a href="#" class="btn btn-primary">Let's Play</a>
                 </div>
             </div>
         </header>
-        <main>
-            <!-- Records number of rounds -->
-            <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                <div class="card-header">Header</div>
-                <div class="card-body">
-                    <h5 class="card-title">Dark card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
+
+        <main class="container jumbotron">
+
             <!-- Game Board -->
             <div id="shell">
                 <div class="colorButtons" id="green"></div>
@@ -45,22 +39,29 @@
                 <div class="colorButtons" id="yellow"></div>
                 <div class="colorButtons" id="blue"></div>
             </div>
+
             <!-- Notifies you if its your turn -->
-            <div class="card" style="width: 18rem;">
+            <div class="turnFlag card mr-1" style="width: 15rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <p class="card-text display-4">Your Turn</p>
+                    <hr>
+                </div>
+                <!-- Tracks score -->
+                <div class="scoreKeeper card text-black  mb-3">
+                    <div class="display-4">Score</div>
+                        <p class="card-text display-1">00</p>
+                    </div>
                 </div>
             </div>
+
         </main>
 
 
-        <footer>
-
+        <footer class="container">
         </footer>
     </div>
 
+    <!-- JQuery, SweetAlert, Bootstrap, and Popper -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -70,6 +71,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </body>
 
 </html>
