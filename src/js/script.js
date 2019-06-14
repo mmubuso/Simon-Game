@@ -1,5 +1,3 @@
-// Javascript arry
-
 
 //Variables 
 //stores variable for clearing setInterval timer
@@ -8,14 +6,23 @@ let stopRunInterval2
 //Stores flag that controls iterator
 let intervalFlag = false
 
-//Tracks light pattern
-let lightOnCounter = 0
-let lightOffCounter = 0
+//Stores start button flag
+let startBtn = $('#start')
+
+//Stores textbox at top of the screen
+let textDisplay = $('header .card-title')
+let display = $('header .card')
+
 //Correspond with simon color pieces
 let greenPiece = $('#green')
 let redPiece = $('#red')
 let yellowPiece = $('#yellow')
 let bluePiece = $('#blue')
+
+//Tracks light pattern
+let lightOnCounter = 0
+let lightOffCounter = 0
+
 //Array of selected colors
 let computerSequence = []
 let playerSequence = []
@@ -28,7 +35,8 @@ let levelTrack = {
     addOne: function(){
         this.score++
         $('.scoreKeeper p').text(this.score)
-    }
+    },
+    isPlayerTurn: false
 }
 
 //Functions
@@ -65,13 +73,13 @@ let compareAnswers = (playerArray,computerArray) => {
 
 //Controls delay between items 
 let runLightSequence = () => {
-    stopRunInterval1 = setInterval(turnlightOn, 1000)
-    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(turnlightOn, 1000),500)
+    stopRunInterval1 = setInterval(toggleGlowEffect, 1000)
+    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(toggleGlowEffect, 1000),500)
 }
 
 //Might turn these into one function using toggle
 //Turns on the light to show activated
-let  turnlightOn =  () => {
+let toggleGlowEffect =  () => {
     if (computerSequence.length > lightOnCounter) {
         console.log("Light On")
         computerSequence[lightOnCounter].toggleClass('glow')
@@ -86,10 +94,12 @@ let  turnlightOn =  () => {
 
 //EventListeners
 //press start button to start game
-$('#start').on('click', () => {
-    runLightSequence()
+startBtn.on('click', () => {
     pushRandomColor(computerSequence)
-    document.getElementById('start').
+    startBtn.hide()
+    textDisplay.html('The Game has started')
+    display.addClass('bg-success text-white')
+    runLightSequence()
 })
 
 
@@ -101,4 +111,10 @@ $('.content .btn').eq(1).on('click', function () {
         icon: "success",
         button: "I Understand",
     })
+})
+
+$('#shell').on('click',(evt) => {
+    if(evt.target.className === 'colorButtons'){
+        console.log('inside')
+    }
 })
