@@ -33,7 +33,7 @@ let playerSequence = []
 let levelTrack = {
     score: 0,
     isPlayerTurn: true,
-    addOne: function(){
+    changeScore: function(){
         this.score++
         $('.scoreKeeper p').text(this.score)
     }, 
@@ -47,9 +47,12 @@ let levelTrack = {
 //Functions
 
 //Generate random number and push color that matches number to computers new sequence
-let pushRandomColor = (arr) => {
+let pushRandomColor = (arr,num) => {
+    if(levelTrack.isPlayerTurn){
+        num = Math.floor(Math.random() * 4) + 1
+    }
     let color;
-switch (Math.floor(Math.random() * 4) + 1) {
+switch (num) {
   case 1:
     color = greenPiece;
     break;
@@ -78,13 +81,14 @@ let compareAnswers = (playerArray,computerArray) => {
 
 //Controls delay between items 
 let runLightSequence = () => {
-    stopRunInterval1 = setInterval(toggleGlowEffect, 1000)
-    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(toggleGlowEffect, 1000),500)
+    stopRunInterval1 = setInterval(toggleGlowEffectSequence, 1000)
+    //Might be able to remove stopRunInterval2
+    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(toggleGlowEffectSequence, 1000),500)
 }
 
 //Might turn these into one function using toggle
 //Turns on the light to show activated
-let toggleGlowEffect =  () => {
+let toggleGlowEffectSequence =  () => {
     if (computerSequence.length > lightOnCounter) {
         console.log("Light On")
         computerSequence[lightOnCounter].toggleClass('glow')
@@ -98,6 +102,18 @@ let toggleGlowEffect =  () => {
 }
 
 //EventListeners
+
+//toggle glow on and then off
+let togglGlowEffect = (evt) => {
+    if(evt.target.className === 'colorButtons'){
+        evt.target.classList.add('glow')
+        setTimeout(() => evt.target.classList.remove('glow'),500)
+    }
+}    
+
+
+
+
 //press start button to start game
 startBtn.on('click', () => {
     pushRandomColor(computerSequence)
@@ -106,7 +122,6 @@ startBtn.on('click', () => {
     display.addClass('bg-success text-white')
     runLightSequence()
 })
-
 
 //Displays the instructions for the game when clicked
 $('.content .btn').eq(1).on('click', function () {
@@ -118,8 +133,8 @@ $('.content .btn').eq(1).on('click', function () {
     })
 })
 
+//Listens for player cliucking on any of the buttons inside shell
 $('#shell').on('click',(evt) => {
-    if(evt.target.className === 'colorButtons'){
-        console.log('inside')
-    }
+    togglGlowEffect(evt)
+    console.log(evt)
 })
