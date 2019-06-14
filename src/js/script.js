@@ -32,11 +32,16 @@ let playerSequence = []
 //Keeps track of what round you're on
 let levelTrack = {
     score: 0,
+    isPlayerTurn: true,
     addOne: function(){
         this.score++
         $('.scoreKeeper p').text(this.score)
-    },
-    isPlayerTurn: false
+    }, 
+    changeTurn:function () {
+        let turnFlag = $('.turnFlag p').eq(0)
+        console.log(this.isPlayerTurn)
+        this.isPlayerTurn ? turnFlag.text('Its your turn! Good Luck') : turnFlag.text('Its the computers turn')
+    }
 }
 
 //Functions
