@@ -42,7 +42,9 @@ let levelTrack = {
         let turnFlag = $('.turnFlag p').eq(0)
         this.isPlayerTurn ? turnFlag.text('Its your turn! Good Luck') : turnFlag.text('Its the computers turn')
     },
-    
+    toggleTurn: function (){
+        this.isPlayerTurn = this.isPlayerTurn ? false : true
+    }  
 }
 
 //Functions
@@ -105,7 +107,7 @@ let verifyPlayerInput = () => {
     if (compareAnswers()) {
         levelTrack.changeTurn()
         checkSequenceLength()
-        computerSequence()
+        computerTurn()
     } else {
         swal({
             title: "You Failed",
