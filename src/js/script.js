@@ -3,6 +3,7 @@
 //stores variable for clearing setInterval timer
 let stopRunInterval1
 let stopRunInterval2
+
 //Stores flag that controls iterator
 //combine with object 
 let intervalFlag = false
@@ -23,7 +24,6 @@ let bluePiece = $('#blue')
 
 //Tracks light pattern
 let lightOnCounter = 0
-let lightOffCounter = 0
 
 //Array of selected colors
 let computerSequence = []
@@ -47,6 +47,8 @@ let levelTrack = {
         this.isPlayerTurn = this.isPlayerTurn ? false : true
     }
 }
+//Sound objects
+
 
 //Functions
 
@@ -101,6 +103,7 @@ let toggleGlowEffectSequence = () => {
             lightOnCounter++
             intervalFlag = false
         } else {
+            computerSequence[lightOnCounter][0].children[0].play()
             intervalFlag = true
         }
     } else {
@@ -117,7 +120,7 @@ let stopGlowEffect = () => {
     levelTrack.changeTurn()
 }
 
-//Function check if player move on or not
+//Function check if player pressed the correct button
 let verifyPlayerInput = () => {
     if (compareAnswers()) {
         checkSequenceLength()
@@ -128,7 +131,9 @@ let verifyPlayerInput = () => {
             icon: "warning",
             button: "Okay"
         })
-        restartGame()
+        $('.lossSound')[0].play()
+        levelTrack.toggleTurn()
+        textDisplay.text(`High Score is ${levelTrack.score}`)
     }
 }
 
@@ -150,22 +155,12 @@ let computerTurn = () => {
     runLightSequence()
 }
 
-//Restart game 
-restartBtn.on('click', () => {
-    if(computerSequence.length > 0) {
-        console.log('restart')
-        startBtn.show()
-        resetValues()
-    }else{
-        textDisplay.text('Simon Game')
-        resetValues()
-    }
-})
 
 //Reset values
 let resetValues = () => {
-    levelTrack.toggleTurn()
+    levelTrack.isPlayerTurn = false
     computerSequence = []
+    playerSequence = []
     levelTrack.score = -1
     levelTrack.changeScore()
 }
@@ -181,6 +176,17 @@ let togglGlowEffect = (evt) => {
 
 
 //EventListeners
+//Restart game 
+restartBtn.on('click', () => {
+    if (computerSequence.length > 0) {
+        startBtn.show()
+        resetValues()
+    } else {
+        textDisplay.text('Simon Game')
+        resetValues()
+    }
+})
+
 
 //press start button to start game
 startBtn.on('click', () => {
@@ -202,8 +208,8 @@ $('#instructions').eq(0).on('click', function () {
 //Listens for player cliucking on any of the buttons inside shell
 $('#shell').on('click', (evt) => {
     if (evt.target.className === "colorButtons") {
-        console.log(evt)
         if (levelTrack.isPlayerTurn) {
+            evt.target.children[0].play()
             levelTrack.changeTurn()
             togglGlowEffect(evt)
             let dataValue = evt.target.dataset.Value
