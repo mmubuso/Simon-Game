@@ -37,10 +37,18 @@
 
             <!-- Game Board -->
             <div id="shell">
-                <div class="colorButtons" id="green" data--value=1 ></div>
-                <div class="colorButtons" id="red" data--value=2></div>
-                <div class="colorButtons" id="yellow" data--value=3></div>
-                <div class="colorButtons" id="blue" data--value=4></div>
+                <div class="colorButtons" id="green" data--value=1 >
+                    <audio src="src/sound/chime_up.wav"></audio>
+                </div>
+                <div class="colorButtons" id="red" data--value=2>
+                    <audio src="src/sound/bloop_x.wav"></audio>
+                </div>
+                <div class="colorButtons" id="yellow" data--value=3>
+                    <audio src="src/sound/chime.wav"></audio>
+                </div>
+                <div class="colorButtons" id="blue" data--value=4>
+                    <audio src="src/sound/chime_down.wav"></audio>
+                </div>
             </div>
 
             <!-- Notifies you if its your turn -->
