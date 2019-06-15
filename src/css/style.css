@@ -6,16 +6,20 @@
     font-family: 'Teko', sans-serif;
 }
 
+body { 
+    background: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
 /* Container for everyting */
 .content{
     display: flex;
     flex-direction: column;
     justify-content: start;
-    height: 900px;
-    /* background-image: url('https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=955&q=80'); */
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+    
 }
 .content .btn{
     width: 120px
@@ -25,6 +29,7 @@ header .card{
     height: 150px;
     padding: 0px;
     margin-bottom: 20px;
+    background-color: rgba(0,0,0,0.3)
 }
 .card-body{
     padding: 5px;
@@ -36,7 +41,9 @@ main{
     display: flex;
     justify-content: space-around;
 }
-
+.jumbotron{
+    background-color: rgba(180, 201, 201, 0.01);
+}
   /* Container for simon pieces */
 #shell{
     border: 20px solid black;
@@ -70,24 +77,25 @@ main{
     min-height: 49%;
     margin: 0 auto;
     z-index: 2;
+    box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.5);
 }
 
 /* Color item buttons */
 #green{
     border-top-left-radius: 100%;
-    background-color: green;
+    background-color: rgb(1, 56, 1);
 }
 #blue{
     border-bottom-right-radius: 100%;
-    background-color: blue;
+    background-color: rgb(0, 0, 117);
 }
 #yellow{
     border-bottom-left-radius: 100%;
-    background-color: yellow;  
+    background-color: rgb(128, 128, 2);  
 }
 #red{
     border-top-right-radius: 100%;
-    background-color: red;
+    background-color: rgb(119, 0, 0);
 }
 .glow{
     box-shadow:

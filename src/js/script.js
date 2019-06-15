@@ -89,7 +89,7 @@ let compareAnswers = () => {
 let runLightSequence = () => {
     stopRunInterval1 = setInterval(toggleGlowEffectSequence, 1000)
     //Might be able to remove stopRunInterval2
-    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(toggleGlowEffectSequence, 1000), 500)
+    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(toggleGlowEffectSequence, 1000), 250)
 }
 
 //Turns on the light to show activated
@@ -133,6 +133,7 @@ let verifyPlayerInput = () => {
         })
         $('.lossSound')[0].play()
         levelTrack.toggleTurn()
+        display.show()
         textDisplay.text(`High Score is ${levelTrack.score}`)
     }
 }
@@ -181,6 +182,7 @@ restartBtn.on('click', () => {
     if (computerSequence.length > 0) {
         startBtn.show()
         resetValues()
+        textDisplay.text('Simon Game')
     } else {
         textDisplay.text('Simon Game')
         resetValues()
@@ -191,6 +193,7 @@ restartBtn.on('click', () => {
 //press start button to start game
 startBtn.on('click', () => {
     startBtn.hide()
+    display.hide()
     textDisplay.html('The Game has started')
     computerTurn()
 })
