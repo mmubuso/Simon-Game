@@ -25,7 +25,7 @@ let lightOnCounter = 0
 let lightOffCounter = 0
 
 //Array of selected colors
-let computerSequence = [greenPiece, redPiece]
+let computerSequence = []
 let playerSequence = []
 
 
@@ -42,9 +42,9 @@ let levelTrack = {
         let turnFlag = $('.turnFlag p').eq(0)
         this.isPlayerTurn ? turnFlag.text('Its your turn! Good Luck') : turnFlag.text('Its the computers turn')
     },
-    toggleTurn: function (){
+    toggleTurn: function () {
         this.isPlayerTurn = this.isPlayerTurn ? false : true
-    }  
+    }
 }
 
 //Functions
@@ -99,15 +99,15 @@ let toggleGlowEffectSequence = () => {
         lightOnCounter = 0
         clearInterval(stopRunInterval1)
         clearInterval(stopRunInterval2)
+        levelTrack.toggleTurn()
+        levelTrack.changeTurn()
     }
 }
 
 //Function check if player move on or not
 let verifyPlayerInput = () => {
     if (compareAnswers()) {
-        levelTrack.changeTurn()
         checkSequenceLength()
-        computerTurn()
     } else {
         swal({
             title: "You Failed",
@@ -115,6 +115,7 @@ let verifyPlayerInput = () => {
             Icon: "warning",
             button: "Okay"
         })
+        
     }
 }
 
@@ -124,16 +125,18 @@ let checkSequenceLength = () => {
     if (playerSequence.length === computerSequence.length) {
         playerSequence = []
         levelTrack.changeScore()
-        levelTrack = levelTrack.isPlayerTurn = false
+        levelTrack.isPlayerTurn = false
+        computerTurn()
     }
 }
 
-let computerTurn = () =>{
+//Computer runs sequence
+let computerTurn = () => {
     levelTrack.changeTurn()
     pushRandomColor(computerSequence)
     runLightSequence()
-
 }
+
 //EventListeners
 
 //toggle glow on and then off
@@ -146,12 +149,9 @@ let togglGlowEffect = (evt) => {
 
 //press start button to start game
 startBtn.on('click', () => {
-    pushRandomColor(computerSequence)
     startBtn.hide()
     textDisplay.html('The Game has started')
-    display.addClass('bg-success text-white')
-    runLightSequence()
-    levelTrack.isPlayerTurn = true
+    computerTurn()
 })
 
 //Displays the instructions for the game when clicked
@@ -167,6 +167,7 @@ $('.content .btn').eq(1).on('click', function () {
 //Listens for player cliucking on any of the buttons inside shell
 $('#shell').on('click', (evt) => {
     if (levelTrack.isPlayerTurn) {
+        levelTrack.changeTurn()
         togglGlowEffect(evt)
         let dataValue = evt.target.dataset.Value
         pushRandomColor(playerSequence, parseInt(dataValue))
