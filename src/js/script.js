@@ -7,8 +7,9 @@ let stopRunInterval2
 //combine with object 
 let intervalFlag = false
 
-//Stores start button flag
+//Stores button
 let startBtn = $('#start')
+let restartBtn = $('#restart')
 
 //Stores textbox at top of the screen
 let textDisplay = $('header .card-title')
@@ -36,7 +37,7 @@ let levelTrack = {
     isPlayerTurn: false,
     changeScore: function () {
         this.score++
-        $('.scoreKeeper p').text(this.score)
+        $('.scoreKeeper p').text((this.score + "").padStart(2, '0'))
     },
     changeTurn: function () {
         let turnFlag = $('.turnFlag p').eq(0)
@@ -90,18 +91,30 @@ let runLightSequence = () => {
 }
 
 //Turns on the light to show activated
+//This function is placed into the callback queue twice at different time intervals
+// Else statement only runs when computer has reached the end sequence 
 let toggleGlowEffectSequence = () => {
     if (computerSequence.length > lightOnCounter) {
         computerSequence[lightOnCounter].toggleClass('glow')
-
-        if (intervalFlag) { lightOnCounter++; intervalFlag = false } else { intervalFlag = true }
+        //Only second function can access this code
+        if (intervalFlag) {
+            lightOnCounter++
+            intervalFlag = false
+        } else {
+            intervalFlag = true
+        }
     } else {
-        lightOnCounter = 0
-        clearInterval(stopRunInterval1)
-        clearInterval(stopRunInterval2)
-        levelTrack.toggleTurn()
-        levelTrack.changeTurn()
+        stopGlowEffect()
     }
+}
+
+//Stop toggleFunction, clear interval and allow user to click on game pieces
+let stopGlowEffect = () => {
+    lightOnCounter = 0
+    clearInterval(stopRunInterval1)
+    clearInterval(stopRunInterval2)
+    levelTrack.toggleTurn()
+    levelTrack.changeTurn()
 }
 
 //Function check if player move on or not
@@ -112,10 +125,10 @@ let verifyPlayerInput = () => {
         swal({
             title: "You Failed",
             text: "Try again next time",
-            Icon: "warning",
+            icon: "warning",
             button: "Okay"
         })
-        
+        restartGame()
     }
 }
 
@@ -137,7 +150,26 @@ let computerTurn = () => {
     runLightSequence()
 }
 
-//EventListeners
+//Restart game 
+restartBtn.on('click', () => {
+    if(computerSequence.length > 0) {
+        console.log('restart')
+        startBtn.show()
+        resetValues()
+    }else{
+        textDisplay.text('Simon Game')
+        resetValues()
+    }
+})
+
+//Reset values
+let resetValues = () => {
+    levelTrack.toggleTurn()
+    computerSequence = []
+    levelTrack.score = -1
+    levelTrack.changeScore()
+}
+
 
 //toggle glow on and then off
 let togglGlowEffect = (evt) => {
@@ -147,6 +179,9 @@ let togglGlowEffect = (evt) => {
     }
 }
 
+
+//EventListeners
+
 //press start button to start game
 startBtn.on('click', () => {
     startBtn.hide()
@@ -155,7 +190,7 @@ startBtn.on('click', () => {
 })
 
 //Displays the instructions for the game when clicked
-$('.content .btn').eq(1).on('click', function () {
+$('#instructions').eq(0).on('click', function () {
     swal({
         title: "Good job!",
         text: "Think fast... SIMON says, Chase my flashing lights and sounds \nThe challenge is to repeat the ever-increasing random signals that SIMON generates.\nThere are three game variations you can play, and you can even set the level of difficulty you want. In any case, you are sure to enjoy hours of challenging fun with SIMON",
@@ -166,13 +201,16 @@ $('.content .btn').eq(1).on('click', function () {
 
 //Listens for player cliucking on any of the buttons inside shell
 $('#shell').on('click', (evt) => {
-    if (levelTrack.isPlayerTurn) {
-        levelTrack.changeTurn()
-        togglGlowEffect(evt)
-        let dataValue = evt.target.dataset.Value
-        pushRandomColor(playerSequence, parseInt(dataValue))
-        verifyPlayerInput()
-    } else {
-        return
+    if (evt.target.className === "colorButtons") {
+        console.log(evt)
+        if (levelTrack.isPlayerTurn) {
+            levelTrack.changeTurn()
+            togglGlowEffect(evt)
+            let dataValue = evt.target.dataset.Value
+            pushRandomColor(playerSequence, parseInt(dataValue))
+            verifyPlayerInput()
+        } else {
+            return
+        }
     }
 })
