@@ -21,16 +21,39 @@ body {
     justify-content: start;
     
 }
+/* Buttons in text display */
 .content .btn{
-    width: 120px
+    background-color: rgba(124, 200, 197, 0);
+    border: none;
+    font-size: 1.5em;
+}
+.content .btn:focus{
+    border: none;
+    font-size: 20px;
+}
+.content a:hover{
+    /* font-size: 30px; */
+    box-shadow:
+        0 0 20px 1px #fff,  /* inner white */
+        0 0 50px 10px yellow, /* middle red */
+        0 0 50px 10px #0ff; /*outer cyan*/
 }
   /* Header section */
 header .card{
     height: 150px;
     padding: 0px;
     margin-bottom: 20px;
-    background-color: rgba(0,0,0,0.3)
+    background-color: rgba(0,0,0,0);
+    border-style: none;
 }
+/* Header Text */
+header .card-title{
+    text-transform: uppercase;
+    color: #EC5D98;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+}
+
 .card-body{
     padding: 5px;
 }
@@ -46,7 +69,7 @@ main{
 }
   /* Container for simon pieces */
 #shell{
-    border: 20px solid black;
+    border: 20px solid rgba(48, 47, 47, 0.527);
     width: 550px;
     height: 550px;
     border-radius: 100%;
@@ -54,7 +77,7 @@ main{
     background-color: black;
     z-index: 1;
     align-self: center;
-
+    box-shadow: 5px 5px 10px 10px rgba(0,0,0,0.5);
 }
 
 /* Style for Score Keeper */
@@ -83,19 +106,19 @@ main{
 /* Color item buttons */
 #green{
     border-top-left-radius: 100%;
-    background-color: rgb(1, 56, 1);
+    background-color: rgb(0, 121, 0);
 }
 #blue{
     border-bottom-right-radius: 100%;
-    background-color: rgb(0, 0, 117);
+    background-color: rgb(0, 0, 255);
 }
 #yellow{
     border-bottom-left-radius: 100%;
-    background-color: rgb(128, 128, 2);  
+    background-color: rgb(255, 255, 0);  
 }
 #red{
     border-top-right-radius: 100%;
-    background-color: rgb(119, 0, 0);
+    background-color: rgb(252, 0, 0);
 }
 .glow{
     box-shadow:

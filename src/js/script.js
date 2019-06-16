@@ -1,3 +1,7 @@
+//Musiteli Mubuso
+//Simon Game
+//Last modified 06/15/19
+
 
 //Variables 
 //stores variable for clearing setInterval timer
@@ -47,7 +51,6 @@ let levelTrack = {
         this.isPlayerTurn = this.isPlayerTurn ? false : true
     }
 }
-//Sound objects
 
 
 //Functions
