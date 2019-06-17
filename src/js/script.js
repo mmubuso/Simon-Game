@@ -14,7 +14,6 @@ let intervalFlag = false
 
 //Stores button
 let startBtn = $('#start')
-let restartBtn = $('#restart')
 
 //Stores textbox at top of the screen
 let textDisplay = $('header .card-title')
@@ -79,6 +78,7 @@ let pushRandomColor = (arr, num) => {
 }
 
 //Return false if arrays dont match and true if they do
+// Turn into match array
 let compareAnswers = () => {
     for (let i = 0; i < playerSequence.length; i++) {
         if (playerSequence[i] !== computerSequence[i]) {
@@ -88,11 +88,13 @@ let compareAnswers = () => {
     return true
 }
 
+
+
 //Controls delay between items 
 let runLightSequence = () => {
     stopRunInterval1 = setInterval(toggleGlowEffectSequence, 1000)
     //Might be able to remove stopRunInterval2
-    stopRunInterval2 = setTimeout(() => stopRunInterval2 = setInterval(toggleGlowEffectSequence, 1000), 250)
+    setTimeout(() => stopRunInterval2 = setInterval(toggleGlowEffectSequence, 1000), 250)
 }
 
 //Turns on the light to show activated
@@ -113,6 +115,7 @@ let toggleGlowEffectSequence = () => {
         stopGlowEffect()
     }
 }
+
 
 //Stop toggleFunction, clear interval and allow user to click on game pieces
 let stopGlowEffect = () => {
@@ -178,10 +181,12 @@ let togglGlowEffect = (evt) => {
     }
 }
 
+//handl textdisply and reset function
+
 
 //EventListeners
 //Restart game 
-restartBtn.on('click', () => {
+$('#restart').on('click', () => {
     if (computerSequence.length > 0) {
         startBtn.show()
         resetValues()
@@ -215,6 +220,7 @@ $('#instructions').eq(0).on('click', function () {
 $('#shell').on('click', (evt) => {
     if (evt.target.className === "colorButtons") {
         if (levelTrack.isPlayerTurn) {
+            //Turn into one function
             evt.target.children[0].play()
             levelTrack.changeTurn()
             togglGlowEffect(evt)
