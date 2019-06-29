@@ -1,6 +1,4 @@
 # Simon-Game
-# Wheel of WDI
-
 General Assembly SEI June 11 - Project 1
 
 
