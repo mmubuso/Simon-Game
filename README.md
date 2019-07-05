@@ -13,6 +13,8 @@ I had little to no experience with but the thought of the challenege motivated m
 
 
 ![Picture of Simon](https://github.com/mmubuso/Simon-Game/blob/master/Simon-Game.png)
+
+## Game Play
 ![Gif of Simon](https://media.giphy.com/media/UTkRzAk6MG5yGpafZU/giphy.gif)
 
 ## How to play
